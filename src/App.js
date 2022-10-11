@@ -1,14 +1,10 @@
 import './App.css';
-import { Button } from './Button/Button';
-import { Header } from './Header/Header';
+import { Greeting } from './Greeting/Greeting'
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Button type="secondary" >Click me</Button>
-      <Button type="secondary">Press</Button> 
-      <Button type="primary">I am first button <span>123</span></Button>
+      <Greeting isLoggedIn={false} unreadMessages={[1, 1, 1]} />
     </div>
   );
 }

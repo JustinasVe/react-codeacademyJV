@@ -1,0 +1,1 @@
+export const GuestGreeting = () => <h1>Please sign in</h1>
