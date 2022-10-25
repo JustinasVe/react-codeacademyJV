@@ -1,51 +1,41 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
-
 function App() {
-  const [count, setCount] = useState(0);
+  const [posts, setPosts] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
 
   useEffect(() => {
-    console.log('COMPONENT MOUNTED');
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((res) => res.json())
+    .then((data) => {
+      setPosts(data);
+    });
   }, []);
- 
-  const handleIncrement = (event) => {
-    console.log(event);
-    // setCount(count + 1);
-  }
-
-  const handleIncrementKeyDown = (event) => {
-    console.log('KEY DOWN');
-  }
-
-  const handleIncrementKeyUp = () => {
-    console.log('KEY UP')
-  }
 
   const handleInputChange = (event) => {
-    console.log(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('SUBMIT1');
-  }
+  console.log(inputValue)
 
-  const handleInputBlur = () => {
-    console.log('INPUT LOST FOCUS')
-  }
-  
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
-        {count}
-          <button 
-           onKeyUp={handleIncrementKeyUp}
-           onKeyDown={handleIncrementKeyDown} 
-           onClick={handleIncrement}>Increment</button>
-        <input onChange={handleInputChange} onBlur={handleInputBlur} />
-      </form>
+      <input onChange={handleInputChange} />
+      {
+      posts
+        .filter((post) => {
+          return post.title.indexOf(inputValue) >= 0
+        })
+        .map((post) => (
+          <div key={post.id} >
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </div>
+        ))
+    }
     </div>
   );
 }
