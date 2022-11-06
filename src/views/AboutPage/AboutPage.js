@@ -1,19 +1,13 @@
-import styled from 'styled-components';
-
-const Title = styled.h1`
-    color: salmon;
-`;
-const Wrapper = styled.div`
-    background-color: pink;
-
-`
-
+import { Wrapper, Title } from './AboutPageStyled';
 
 export const AboutPage = () => {
+
+    const randomNumber = Math.random() * 100;
+
     return (
-        <div className={styled.wrapper}>
-            {/* <h1 className={styles.title}>AboutPage</h1> */}
-            <Title>About page</Title>
-        </div>
+        <Wrapper>
+            {/* <h1 className={styles.title}>About page</h1> */}
+            <Title randomNumber={randomNumber}>About page</Title>
+        </Wrapper>
     )
 }

@@ -37,6 +37,22 @@
   }
 }
 
-.link {
-  margin-right: 10px;
+.button-orange {
+  background-color: orange;
+}
+
+.search-input {
+  margin-bottom: 10px;
+}
+
+.posts-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.post {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  width: 25%;
 }
